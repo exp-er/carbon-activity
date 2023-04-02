@@ -101,7 +101,7 @@ if select=='Summary':
 img_name = 'Output.png'
 background= Image.open('./data/Background.jpg')
 color = 'dark_blue'  # grey,light_blue,blue,orange,purple,yellow,green
-font = 'Roboto-Bold.ttf'
+font = 'data/Roboto-Bold.ttf'
 background = write_image(background, colors[color], text1, text2)
 background.save(img_name)
 
