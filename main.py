@@ -21,7 +21,7 @@ stream=st.slider('Streaming Hours', 0, 24,1)
 c_stream=stream*36
 #3. Single credit card payment - 4g
 st.caption('Payments per day:')
-pay=st.slider('Payment',0,100,1,5)
+pay=st.slider('Payment',0,100,1,1)
 c_pay=pay*4
 
 #4. Sending selfie - 50g -
