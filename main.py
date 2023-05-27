@@ -2,10 +2,21 @@ import streamlit as st
 from data.output import *
 from PIL import Image, ImageDraw, ImageFont
 
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+uri = "mongodb+srv://carbon-activity:fmcpE34v2qn4eQBR@carbon-activity.sof7n1l.mongodb.net/?retryWrites=true&w=majority"
+
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+db = client["carbon-activity"]
+carbon=db["carbon"]
 
 st.markdown("<h2 style='text-align: center; color:#dfbe99 ;'>Carbon Activity - A Dualchain Initiative</h2>", unsafe_allow_html=True)
 
 name=st.text_input('Name')
+age=st.number_input('Age')
 
 st.header('Carbon Activity Tracker')
 st.write('Entertainment/Social Media/Expenses')
@@ -105,13 +116,21 @@ font = 'data/Roboto-Bold.ttf'
 background = write_image(background, colors[color], text1, text2)
 background.save(img_name)
 
-with open("Output.png", "rb") as file:
-    btn = st.download_button(
+
+agree = st.checkbox("I have filled out the information.")
+
+if agree:
+    if st.button('Submit'):
+        db.carbon.insert_many([{"name" : name, "age": age, "Social Media": c_social, "Streaming": c_stream, "Payments": c_pay, "Sending Photos": c_photo, "Streaming Music": c_music, "Virtual Meetings": c_meet, "Google Searches": c_search, "Computer Hours": c_computer, "Traveling": c_type, "Coffe/Tea Intake": c_cup, "Food Intake(Diet)": c_diet}])
+        with open("Output.png", "rb") as file:
+            btn = st.download_button(
             label="Download Output",
             data=file,
             file_name="Output.png",
             mime="image/png"
           )
+
+
 
 
 

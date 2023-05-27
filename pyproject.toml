@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "carbon-activity"
+version = "0.1.0"
+description = "Carbon Activity with Database Storage Solution"
+authors = ["Akshat"]
+readme = "README.md"
+packages = [{include = "carbon_activity"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
+streamlit = "^1.22.0"
+pymongo = "^4.3.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
