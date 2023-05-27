@@ -28,7 +28,7 @@ def center_text(img, font, text1, text2, fill1, fill2):
     return img
 
 
-def add_text(img, color, text1, text2, logo=False, font='./data/Roboto-Regular.ttf', font_size=40):
+def add_text(img, color, text1, text2, logo=False, font='./data/font/Forum-Regular.ttf', font_size=40):
     draw = ImageDraw.Draw(img)
 
     p_font = color['p_font']
@@ -38,7 +38,7 @@ def add_text(img, color, text1, text2, logo=False, font='./data/Roboto-Regular.t
     img_w, img_h = img.size
     height = img_h // 3
     font = ImageFont.truetype(font, size=font_size)
-    font2 = ImageFont.truetype('./data/Roboto-Bold.ttf', size=70)
+    font2 = ImageFont.truetype('./data/font/Forum-Regular.ttf', size=70)
 
     if logo == False:
         center_text(img, font, text1, text2, p_font, s_font)
